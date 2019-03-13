@@ -23,9 +23,8 @@ ExternalProject_Add(${targetname} "${ARGUMENTS}")
 
 #--- Add step to write init_RPClab.sh for the module --------
 ExternalProject_Add_Step(${targetname} after_install 
-	WORKING_DIRECTORY ${ILCSOFT_PATH}
-	COMMAND ${CMAKE_COMMAND} -DILCSOFT_PATH=${ILCSOFT_PATH} -Dname=${targetname} -Dtargetdir=${targetdir} -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/WriteInit.cmake
-	COMMENT "Writing environment variables to init_ilcsoft.sh"
+	COMMAND ${CMAKE_COMMAND} -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -Dname=${targetname} -Dtargetdir=${targetdir} -P ${CMAKE_SOURCE_DIR}/cmake/WriteInit.cmake
+	COMMENT "Writing environment variables to init_RPClab.sh"
 	DEPENDEES install build
 	ALWAYS 1
 )
