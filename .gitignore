@@ -9,3 +9,5 @@ compile_commands.json
 CTestTestfile.cmake
 bin
 build
+.kdev4/
+RPClab.kdev4
